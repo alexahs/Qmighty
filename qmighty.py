@@ -142,15 +142,6 @@ class Qmighty:
             print(f"\033[{n};0f\033[1J", end="")
             print("\033[f", end="")
 
-    def _issue_commands(self):
-        self.user_input = None
-        t = threading.Thread(target=self.get_input)
-        t.daemon = True
-        t.start()
-
-        t.join(timeout=self._command_input_timeout)
-        return self.user_input
-
     def print_progress(self):
         head = ["Job ID", "Name", "Elapsed Time", "Remaining Time"]
         self.clear_n_lines(self.num_procs + 5)
